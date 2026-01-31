@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment - Early Identification of Foundational Learning Gaps</title>
+    <i class="fi fi-ts-book-open-cover"></i>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Inline CSS for Purple Gradient Theme */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6a11cb, #2575fc);
+            --secondary-bg: #f8f9ff;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-primary: #333;
+            --text-secondary: #666;
+            --spacing: 1rem;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(106, 17, 203, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--secondary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header/Navbar */
+        header {
+            background: var(--primary-gradient);
+            padding: var(--spacing);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing);
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        .nav-auth {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login {
+            background: white;
+            color: #6a11cb;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #e0e0e0;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem var(--spacing);
+        }
+
+        .assignment-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .subject-section {
+            margin-bottom: 3rem;
+        }
+
+        .subject-section h2 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+        }
+
+        .question h3 {
+            margin-bottom: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .option {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .option:hover {
+            background: rgba(106, 17, 203, 0.1);
+        }
+
+        .option.selected {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: #6a11cb;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+            margin-top: 2rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .results {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        .results h3 {
+            color: #6a11cb;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 2rem var(--spacing);
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-content ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            .assignment-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img src="img/logo.png" alt="EdTech Logo" class="logo">
+                <span>EdTech Platform</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="student_dashboard.html">Dashboard</a></li>
+                <li><a href="assessment.html">Assessment</a></li>
+                <li><a href="assignment.html" class="active">Assignment</a></li>
+                <li><a href="report.html">Report</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-login">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="assignment-section">
+            <h1>Assignment: Excel in Basics</h1>
+            <p>Test your knowledge in Algebra, English, and Java. Select one answer per question.</p>
+
+            <!-- Algebra Section -->
+            <div class="subject-section">
+                <h2>Algebra Basics</h2>
+                <div class="question" data-subject="algebra" data-qid="1">
+                    <h3>1. What is 2x + 3 = 7? Solve for x.</h3>
+                    <div class="options">
+                        <div class="option" data-opt="2">2</div>
+                        <div class="option" data-opt="3">3</div>
+                        <div class="option" data-opt="1">1</div>
+                        <div class="option" data-opt="4">4</div>
+                    </div>
+                </div>
+                <div class="question" data-subject="algebra" data-qid="2">
+                    <h3>2. What is the square of 5?</h3>
+                    <div class="options">
+                        <div class="option" data-opt="25">25</div>
+                        <div class="option" data-opt="15">15</div>
+                        <div class="option" data-opt="20">20</div>
+                        <div class="option" data-opt="30">30</div>
+                    </div>
+                </div><br>
+                <div class="question" data-subject="algebra" data-qid="3">
+                    <h3>3. Simplify: 4 + 2 * 3</h3>
+                    <div class="options">
+                        <div class="option" data-opt="10">10</div>
+                        <div class="option" data-opt="12">12</div>
+                        <div class="option" data-opt="8">8</div>
+                        <div class="option" data-opt="14">14</div>
+                    </div>
+                </div>
+            </div><br>
+
+            <!-- English Section -->
+            <div class="subject-section">
+                <h2>English Basics</h2>
+                <div class="question" data-subject="english" data-qid="1">
+                    <h3>1. What is a noun?</h3>
+                    <div class="options">
+                        <div class="option" data-opt="Person/Thing">Person/Thing</div>
+                        <div class="option" data-opt="Action">Action</div>
+                        <div class="option" data-opt="Description">Description</div>
+                        <div class="option" data-opt="Time">Time</div>
+                    </div>
+                </div>
+                <div class="question" data-subject="english" data-qid="2">
+                    <h3>2. Choose the correct sentence.</h3>
+                    <div class="options">
+                        <div class="option" data-opt="I am happy">I am happy</div>
+                        <div class="option" data-opt="I is happy">I is happy</div>
+                        <div class="option" data-opt="I are happy">I are happy</div>
+                        <div class="option" data-opt="I be happy">I be happy</div>
+                    </div>
+                </div>
+                <div class="question" data-subject="english" data-qid="3">
+                    <h3>3. What is the plural of "child"?</h3>
+                    <div class="options">
+                        <div class="option" data-opt="Children">Children</div>
+                        <div class="option" data-opt="Childs">Childs</div>
+                        <div class="option" data-opt="Childes">Childes</div>
+                        <div class="option" data-opt="Childrens">Childrens</div>
+                    </div>
+                </div>
+            </div><br>
+
+            <!-- Java Section -->
+            <div class="subject-section">
+                <h2>Java Basics</h2>
+                <div class="question" data-subject="java" data-qid="1">
+                    <h3>1. What is the output of System.out.println("Hello");</h3>
+                    <div class="options">
+                        <div class="option" data-opt="Hello">Hello</div>
+                        <div class="option" data-opt="Error">Error</div>
+                        <div class="option" data-opt="Nothing">Nothing</div>
+                        <div class="option" data-opt="Hi">Hi</div>
+                    </div>
+                </div>
+                <div class="question" data-subject="java" data-qid="2">
+                    <h3>2. What is the data type for whole numbers?</h3>
+                    <div class="options">
+                        <div class="option" data-opt="int">int</div>
+                        <div class="option" data-opt="float">float</div>
+                        <div class="option" data-opt="char">char</div>
+                        <div class="option" data-opt="String">String</div>
+                    </div>
+                </div>
+                <div class="question" data-subject="java" data-qid="3">
+                    <h3>3. How do you declare a variable in Java?</h3>
+                    <div class="options">
+                        <div class="option" data-opt="int x = 5;">int x = 5;</div>
+                        <div class="option" data-opt="x = 5;">x = 5;</div>
+                        <div class="option" data-opt="int x;">int x;</div>
+                        <div class="option" data-opt="var x = 5;">var x = 5;</div>
+                    </div>
+                </div>
+            </div><br>
+
+            <button id="submit-btn" class="btn-primary">Submit Assignment</button>
+
+            <!-- Results Section -->
+            <div class="results" id="results">
+                <h3>Results</h3>
+                <p id="score">Score: 0/9</p>
+                <p id="grade">Grade: C</p>
+                <p id="feedback">Keep practicing!</p>
+                <a href="report.html" class="btn-primary">View Full Report</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 EdTech Platform. All rights reserved.</p>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // JS for handling selections, validation, and grading
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Assignment page loaded.');
+
+            const submitBtn = document.getElementById('submit-btn');
+            const resultsDiv = document.getElementById('results');
+            let userAnswers = {};
+
+            // Handle option selection
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const question = option.closest('.question');
+                    const qid = question.dataset.qid;
+                    const subject = question.dataset.subject;
+                    const key = `${subject}-${qid}`;
+
+                    // Deselect others in the same question
+                    question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    userAnswers[key] = option.dataset.opt;
+                });
+            });
+
+            // Correct answers
+            const correctAnswers = {
+                'algebra-1': '2',
+                'algebra-2': '25',
+                'algebra-3': '10',
+                'english-1': 'Person/Thing',
+                'english-2': 'I am happy',
+                'english-3': 'Children',
+                'java-1': 'Hello',
+                'java-2': 'int',
+                'java-3': 'int x = 5;'
+            };
+
+            // Submit and validate
+            submitBtn.addEventListener('click', () => {
+                let score = 0;
+                const total = 9;
+                let gaps = [];
+
+                Object.keys(correctAnswers).forEach(key => {
+                    if (userAnswers[key] === correctAnswers[key]) {
+                        score++;
+                    } else {
+                        gaps.push(key.split('-')[0] + ' Q' + key.split('-')[1]);
+                    }
+                });
+
+                const percentage = (score / total) * 100;
+                let grade, feedback;
+                if (percentage >= 80) {
+                    grade = 'A';
+                    feedback = 'Excellent! You excelled in the basics.';
+                } else if (percentage >= 60) {
+                    grade = 'B';
+                    feedback = 'Good job! Review a few areas.';
+                } else {
+                    grade = 'C';
+                    feedback = 'Keep practicing the basics.';
+                }
+
+                // Display results
+                document.getElementById('score').textContent = `Score: ${score}/${total}`;
+                document.getElementById('grade').textContent = `Grade: ${grade}`;
+                document.getElementById('feedback').textContent = feedback;
+                resultsDiv.style.display = 'block';
+
+                // Save to localStorage for report
+                localStorage.setItem('assignmentResults', JSON.stringify({ score, total, grade, gaps }));
+            });
+        });
+    </script>
+</body>
+</html>
