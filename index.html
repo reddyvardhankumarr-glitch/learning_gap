@@ -3,220 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Early Identification of Foundational Learning Gaps</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="img/logo.png" type="image/png">
-    <!-- Optional: Font Awesome for icons (if you want real icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Early Identification of Foundational Learning Gaps | MindSpark</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with Navbar -->
-    <header>
-        <nav class="navbar">
-            <div class="nav-logo">
-                <img src="img/logo.png" alt="EdTech Logo" class="logo">
-                <span>EdTech Platform</span>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <h2>MindSpark</h2>
+                </div>
+                <div class="auth-buttons">
+                    <a href="#login" class="auth-btn login-btn">Login</a>
+                    <a href="#signup" class="auth-btn signup-btn">Sign Up</a>
+                </div>
             </div>
             <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="student_dashboard.html">Dashboard</a></li>
-                <li><a href="assessment.html">Assessment</a></li>
-                <li><a href="report.html">Report</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#team">Team</a></li>
             </ul>
-            <div class="nav-search">
-                <label for="search" class="search-label">Search Subjects</label>
-                <input type="text" id="search" placeholder="e.g., Algebra, Java" class="search-input">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="nav-auth">
-                <a href="login.html" class="btn-login">Login</a>
-                <a href="signup.html" class="btn-signup">Sign Up</a>
-            </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <section class="hero">
+    <section id="home" class="hero">
+        <div class="hero-container">
             <h1>Early Identification of Foundational Learning Gaps</h1>
-            <p>Assess, Analyze, and Bridge Learning Gaps with Our EdTech Platform. Start your journey today!</p>
+            <p>Concept-based assessments identify learning gaps before they become academic roadblocks</p>
             <div class="hero-buttons">
-                <a href="assessment.html" class="btn-primary">Start Assessment</a>
-                <a href="login.html" class="btn-secondary">Login</a>
-                <a href="signup.html" class="btn-secondary">Sign Up</a>
+                <a href="#demo" class="btn-primary">Try Demo</a>
+                <a href="#problem" class="btn-secondary">Learn More</a>
             </div>
-        </section>
-        <section class="subjects">
-            <h2>Select a Subject</h2>
-            <div class="subject-cards">
-                <div class="card" onclick="selectSubject('algebra')">
-                    <i class="fas fa-calculator card-icon"></i> <!-- Font Awesome icon -->
-                    <h3>Algebra Fundamentals</h3>
-                    <p>Master core concepts early.</p>
-                </div>
-                <div class="card" onclick="selectSubject('java')">
-                    <i class="fas fa-code card-icon"></i> <!-- Font Awesome icon -->
-                    <h3>Java Fundamentals</h3>
-                    <p>Build programming skills.</p>
-                </div>
-                <div class="card" onclick="selectSubject('english')">
-                    <i class="fas fa-book card-icon"></i> <!-- Font Awesome icon -->
-                    <h3>English Basics</h3>
-                    <p>Enhance language proficiency.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- Rest of sections remain same -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2>The Hidden Crisis</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>Undetected Gaps</h3>
+                    <p>Students advance without mastering basics, creating invisible knowledge holes</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Compounding Failure</h3>
+                    <p>One weak concept snowballs into poor performance across subjects</p>
+                </div>
+                <div class="problem-card">
+                    <h3>High Dropout Rates</h3>
+                    <p>60% of academic failures trace back to unaddressed foundational gaps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="solution">
+        <div class="container">
+            <h2>How MindSpark Works</h2>
+            <div class="solution-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Concept-Based Quiz</h3>
+                    <p>Targeted assessments map to specific foundational skills</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Gap Detection</h3>
+                    <p>AI identifies precise weak areas, not just overall scores</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Actionable Feedback</h3>
+                    <p>Clear recommendations for targeted intervention</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2>Live Prototype</h2>
+            <div class="demo-frame">
+                <iframe src="quiz.html" frameborder="0"></iframe>
+            </div>
+            <p>Try the working prototype above - detects gaps in real-time!</p>
+        </div>
+    </section>
+
     <footer>
-    <style>
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 2rem 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .footer-content p {
-            margin-bottom: 1rem;
-        }
-        .footer-content ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        .footer-content ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .footer-content ul li a:hover {
-            color: #007bff;
-        }
-        /* Hidden content sections */
-        .footer-info {
-            display: none;
-            max-width: 1200px;
-            margin: 1rem auto;
-            padding: 1rem 2rem;
-            background-color: #444;
-            border-radius: 8px;
-            text-align: left;
-        }
-        .footer-info h3 {
-            color: #007bff;
-            margin-bottom: 1rem;
-        }
-        .footer-info ul {
-            list-style: none;
-            padding: 0;
-        }
-        .footer-info ul li {
-            margin-bottom: 0.5rem;
-        }
-        .footer-info a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .footer-info a:hover {
-            text-decoration: underline;
-        }
-        /* Responsive */
-        @media (max-width: 768px) {
-            .footer-content ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
-    <div class="footer-content">
-        <p>&copy; 2023 EdTech Platform. All rights reserved.</p>
-        <ul>
-            <li><a href="#" id="about-link">About</a></li>
-            <li><a href="#" id="contact-link">Contact</a></li>
-            <li><a href="#" id="privacy-link">Privacy</a></li>
-        </ul>
-    </div>
-    <!-- About Info -->
-    <div class="footer-info" id="about-info">
-        <h3>About EdTech Platform</h3>
-        <ul>
-            <li><strong>Mission:</strong> Our EdTech Platform is dedicated to the early identification and bridging of foundational learning gaps in subjects like Algebra, Java, and English. We empower students and educators with assessments, analytics, and personalized learning paths to ensure mastery of core concepts from the start.</li>
-            <li><strong>Vision:</strong> To revolutionize education by making gap detection proactive, accessible, and effective, fostering a generation of confident learners equipped for future challenges.</li>
-            <li><strong>Key Features:</strong>
-                <ul>
-                    <li>Interactive assessments to pinpoint learning gaps.</li>
-                    <li>Real-time analytics and reports for progress tracking.</li>
-                    <li>Subject-specific modules for Algebra Fundamentals, Java Fundamentals, and English Basics.</li>
-                    <li>User-friendly dashboard for students and educators.</li>
-                </ul>
-            </li>
-            <li><strong>Target Audience:</strong> Students seeking to strengthen basics, teachers aiming to support early intervention, and parents monitoring educational progress.</li>
-            <li><strong>Technology:</strong> Built with modern web technologies, including responsive design, Font Awesome icons, and secure user authentication for a seamless experience.</li>
-        </ul>
-    </div>
-    <!-- Contact Info -->
-    <div class="footer-info" id="contact-info">
-        <h3>Contact Details</h3>
-        <ul>
-            <li><strong>Phone:</strong> <a href="tel:7671889491">7671889491</a></li>
-            <li><strong>Email:</strong> <a href="mailto:support@edtechplatform.com">support@edtechplatform.com</a></li>
-            <li><strong>Address:</strong> 123 Education Lane, Learning City, USA</li>
-            <li><strong>Social Media:</strong> Follow us on <a href="#" target="_blank">Twitter (@EdTechPlatform)</a> and <a href="#" target="_blank">LinkedIn</a> for updates.</li>
-        </ul>
-    </div>
-    <!-- Privacy Info -->
-    <div class="footer-info" id="privacy-info">
-        <h3>Privacy Policy Summary</h3>
-        <ul>
-            <li>We collect minimal user data for assessments and personalization.</li>
-            <li>Data is encrypted and not shared without consent.</li>
-            <li>Users can request data deletion at any time.</li>
-        </ul>
-    </div>
-    <script>
-        // JavaScript to toggle visibility of info sections
-        const aboutLink = document.getElementById('about-link');
-        const contactLink = document.getElementById('contact-link');
-        const privacyLink = document.getElementById('privacy-link');
-        const aboutInfo = document.getElementById('about-info');
-        const contactInfo = document.getElementById('contact-info');
-        const privacyInfo = document.getElementById('privacy-info');
+        <div class="container">
+            <p>&copy; 2026 MindSpark. Built by Annamacharya Institute of Technology & Sciences.</p>
+        </div>
+    </footer>
 
-        // Function to hide all info sections
-        function hideAll() {
-            aboutInfo.style.display = 'none';
-            contactInfo.style.display = 'none';
-            privacyInfo.style.display = 'none';
-        }
-
-        // Event listeners for links
-        aboutLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            hideAll();
-            aboutInfo.style.display = 'block';
-        });
-
-        contactLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            hideAll();
-            contactInfo.style.display = 'block';
-        });
-
-        privacyLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            hideAll();
-            privacyInfo.style.display = 'block';
-        });
-    </script>
-</footer>
-
-    <script src="js/app.js"></script>
-    <script src="toast.js"></script>"></script>
+    <script src="script.js"></script>
 </body>
 </html>
