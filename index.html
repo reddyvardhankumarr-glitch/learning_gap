@@ -3,220 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Early Identification of Foundational Learning Gaps</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="img/logo.png" type="image/png">
-    <!-- Optional: Font Awesome for icons (if you want real icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <!-- Header with Navbar -->
-    <header>
-        <nav class="navbar">
-            <div class="nav-logo">
-                <img src="img/logo.png" alt="EdTech Logo" class="logo">
-                <span>EdTech Platform</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="student_dashboard.html">Dashboard</a></li>
-                <li><a href="assessment.html">Assessment</a></li>
-                <li><a href="report.html">Report</a></li>
-            </ul>
-            <div class="nav-search">
-                <label for="search" class="search-label">Search Subjects</label>
-                <input type="text" id="search" placeholder="e.g., Algebra, Java" class="search-input">
-            </div>
-            <div class="nav-auth">
-                <a href="login.html" class="btn-login">Login</a>
-                <a href="signup.html" class="btn-signup">Sign Up</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <section class="hero">
-            <h1>Early Identification of Foundational Learning Gaps</h1>
-            <p>Assess, Analyze, and Bridge Learning Gaps with Our EdTech Platform. Start your journey today!</p>
-            <div class="hero-buttons">
-                <a href="select.html" class="btn-primary">Start Assessment</a>
-                <a href="login.html" class="btn-secondary">Login</a>
-                <a href="signup.html" class="btn-secondary">Sign Up</a>
-            </div>
-        </section>
-        <section class="subjects">
-            <h2>Select a Subject</h2>
-            <div class="subject-cards">
-                <div class="card" onclick="selectSubject('algebra')">
-                    <i class="fas fa-calculator card-icon"></i> <!-- Font Awesome icon -->
-                    <h3>Algebra Fundamentals</h3>
-                    <p>Master core concepts early.</p>
-                </div>
-                <div class="card" onclick="selectSubject('java')">
-                    <i class="fas fa-code card-icon"></i> <!-- Font Awesome icon -->
-                    <h3>Java Fundamentals</h3>
-                    <p>Build programming skills.</p>
-                </div>
-                <div class="card" onclick="selectSubject('english')">
-                    <i class="fas fa-book card-icon"></i> <!-- Font Awesome icon -->
-                    <h3>English Basics</h3>
-                    <p>Enhance language proficiency.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
+    <title>MindSpark - Subject Assessment</title>
     <style>
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 2rem 0;
-            font-family: Arial, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            position: relative;
+        }
+
+        .header {
             text-align: center;
+            margin-bottom: 40px;
         }
-        .footer-content p {
-            margin-bottom: 1rem;
+
+        .logo {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
-        .footer-content ul {
-            list-style: none;
-            padding: 0;
+
+        .title {
+            color: #1e293b;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .search-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .search-row {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
-        .footer-content ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+            min-width: 200px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            white-space: nowrap;
         }
-        .footer-content ul li a:hover {
-            color: #007bff;
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
-        /* Hidden content sections */
-        .footer-info {
-            display: none;
-            max-width: 1200px;
-            margin: 1rem auto;
-            padding: 1rem 2rem;
-            background-color: #444;
-            border-radius: 8px;
-            text-align: left;
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 500;
         }
-        .footer-info h3 {
-            color: #007bff;
-            margin-bottom: 1rem;
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .footer-info ul {
-            list-style: none;
-            padding: 0;
+
+        .cta-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
-        .footer-info ul li {
-            margin-bottom: 0.5rem;
-        }
-        .footer-info a {
-            color: #fff;
+
+        .cta-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
             text-decoration: none;
+            display: inline-block;
         }
-        .footer-info a:hover {
-            text-decoration: underline;
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255,255,255,0.3);
         }
-        /* Responsive */
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-color: #667eea;
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .subject-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
-            .footer-content ul {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .search-row {
                 flex-direction: column;
-                gap: 1rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
             }
         }
     </style>
-    <div class="footer-content">
-        <p>&copy; 2023 EdTech Platform. All rights reserved.</p>
-        <ul>
-            <li><a href="#" id="about-link">About</a></li>
-            <li><a href="#" id="contact-link">Contact</a></li>
-            <li><a href="#" id="privacy-link">Privacy</a></li>
-        </ul>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">MindSpark</h1>
+            <div class="title">Early Identification of Foundational Learning Gaps</div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-row">
+                <input type="text" class="search-input" placeholder="Search subjects, topics, or skills...">
+                <button class="search-btn">Search</button>
+            </div>
+            <div class="search-row">
+                <input type="text" class="search-input" placeholder="Enter Subject Name">
+                <button class="search-btn">Submit</button>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-title">Analyze, Bridge Learning Gaps with Our Platform. Start Your Journey!</div>
+            <a href="quiz.html" class="cta-btn">Take Assessment →</a>
+        </div>
+
+        <div class="subjects-grid">
+            <div class="subject-card">
+                <div class="subject-icon">📐</div>
+                <div class="subject-name">Algebra Fundamentals</div>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">📈</div>
+                <div class="subject-name">Java Concepts</div>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">🔢</div>
+                <div class="subject-name">Basic Programming</div>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">📊</div>
+                <div class="subject-name">Build Skills</div>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">🧮</div>
+                <div class="subject-name">Basic Numeracy</div>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">📚</div>
+                <div class="subject-name">Language Mastery</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 MindSpark. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Contact</a></p>
+        </div>
     </div>
-    <!-- About Info -->
-    <div class="footer-info" id="about-info">
-        <h3>About EdTech Platform</h3>
-        <ul>
-            <li><strong>Mission:</strong> Our EdTech Platform is dedicated to the early identification and bridging of foundational learning gaps in subjects like Algebra, Java, and English. We empower students and educators with assessments, analytics, and personalized learning paths to ensure mastery of core concepts from the start.</li>
-            <li><strong>Vision:</strong> To revolutionize education by making gap detection proactive, accessible, and effective, fostering a generation of confident learners equipped for future challenges.</li>
-            <li><strong>Key Features:</strong>
-                <ul>
-                    <li>Interactive assessments to pinpoint learning gaps.</li>
-                    <li>Real-time analytics and reports for progress tracking.</li>
-                    <li>Subject-specific modules for Algebra Fundamentals, Java Fundamentals, and English Basics.</li>
-                    <li>User-friendly dashboard for students and educators.</li>
-                </ul>
-            </li>
-            <li><strong>Target Audience:</strong> Students seeking to strengthen basics, teachers aiming to support early intervention, and parents monitoring educational progress.</li>
-            <li><strong>Technology:</strong> Built with modern web technologies, including responsive design, Font Awesome icons, and secure user authentication for a seamless experience.</li>
-        </ul>
-    </div>
-    <!-- Contact Info -->
-    <div class="footer-info" id="contact-info">
-        <h3>Contact Details</h3>
-        <ul>
-            <li><strong>Phone:</strong> <a href="tel:7671889491">7671889491</a></li>
-            <li><strong>Email:</strong> <a href="mailto:support@edtechplatform.com">support@edtechplatform.com</a></li>
-            <li><strong>Address:</strong> 123 Education Lane, Learning City, USA</li>
-            <li><strong>Social Media:</strong> Follow us on <a href="#" target="_blank">Twitter (@EdTechPlatform)</a> and <a href="#" target="_blank">LinkedIn</a> for updates.</li>
-        </ul>
-    </div>
-    <!-- Privacy Info -->
-    <div class="footer-info" id="privacy-info">
-        <h3>Privacy Policy Summary</h3>
-        <ul>
-            <li>We collect minimal user data for assessments and personalization.</li>
-            <li>Data is encrypted and not shared without consent.</li>
-            <li>Users can request data deletion at any time.</li>
-        </ul>
-    </div>
+
     <script>
-        // JavaScript to toggle visibility of info sections
-        const aboutLink = document.getElementById('about-link');
-        const contactLink = document.getElementById('contact-link');
-        const privacyLink = document.getElementById('privacy-link');
-        const aboutInfo = document.getElementById('about-info');
-        const contactInfo = document.getElementById('contact-info');
-        const privacyInfo = document.getElementById('privacy-info');
-
-        // Function to hide all info sections
-        function hideAll() {
-            aboutInfo.style.display = 'none';
-            contactInfo.style.display = 'none';
-            privacyInfo.style.display = 'none';
-        }
-
-        // Event listeners for links
-        aboutLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            hideAll();
-            aboutInfo.style.display = 'block';
+        // Simple search functionality
+        document.querySelectorAll('.search-input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    this.nextElementSibling.click();
+                }
+            });
         });
 
-        contactLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            hideAll();
-            contactInfo.style.display = 'block';
-        });
-
-        privacyLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            hideAll();
-            privacyInfo.style.display = 'block';
+        // Subject card click
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    window.location.href = 'quiz.html';
+                }, 150);
+            });
         });
     </script>
-</footer>
-
-    <script src="js/app.js"></script>
-    <script src="toast.js"></script>"></script>
 </body>
 </html>
